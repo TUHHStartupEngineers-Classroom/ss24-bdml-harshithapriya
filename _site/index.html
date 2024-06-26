@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.5.45">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Joschka Schwarz">
 
-<title>MyLabJournal - My Lab Journal</title>
+<title>My Lab Journal – MyLabJournal</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -18,8 +18,42 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -52,7 +86,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -61,8 +101,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 
@@ -73,24 +115,25 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">MyLabJournal</span>
     </a>
   </div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Journal</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
@@ -113,19 +156,18 @@ ul.task-list li input[type="checkbox"] {
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./content/02_notes/05_class_notes.html">
- <span class="menu-text">Class notes</span></a>
+    <a class="nav-link" href="./content/02_notes/05_class_notes.html"> 
+<span class="menu-text">Class notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./content/03_other/06_links.html">
- <span class="menu-text">Links</span></a>
+    <a class="nav-link" href="./content/03_other/06_links.html"> 
+<span class="menu-text">Links</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -159,26 +201,1329 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="assets/logo/TIE_logo.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="assets/logo/TIE_logo.svg" class="img-fluid figure-img" style="width:80.0%"></a></p>
+<p><a href="assets/logo/logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="assets/logo/logo.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></a></p>
 </figure>
 </div>
-<p>This is a template example for lab journaling. Students in the data science courses at the Institute of Entrepreneurship will use this template to learn R for business analytics. Students can replace this text as they wish.</p>
-<section id="how-to-use" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use">How to use</h2>
+<p>Supervised ML - Regression (II)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(recipes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'recipes'
+
+The following object is masked from 'package:stringr':
+
+    fixed
+
+The following object is masked from 'package:stats':
+
+    step</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>bike_features_tbl <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">ADMIN</span><span class="sc">\\</span><span class="st">Downloads</span><span class="sc">\\</span><span class="st">bike_features_tbl.rds"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the structure of the dataset</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(bike_features_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [231 × 67] (S3: tbl_df/tbl/data.frame)
+ $ bike_id                  : num [1:231] 2875 2873 2874 2876 2877 ...
+ $ model                    : chr [1:231] "Aeroad CF SL Disc 8.0 Di2" "Aeroad CF SLX Disc 9.0 ETAP" "Aeroad CF SLX Disc 9.0 Di2" "Aeroad CF SL Disc 8.0 ETAP" ...
+ $ model_year               : num [1:231] 2020 2020 2020 2020 2020 ...
+ $ frame_material           : chr [1:231] "carbon" "carbon" "carbon" "carbon" ...
+ $ weight                   : num [1:231] 7.6 7.27 7.1 7.73 7.83 6.8 6.8 7.6 7.3 7.2 ...
+ $ price                    : num [1:231] 4579 6919 6429 5069 3609 ...
+ $ category_1               : chr [1:231] "Road" "Road" "Road" "Road" ...
+ $ category_2               : chr [1:231] "Race" "Race" "Race" "Race" ...
+ $ category_3               : chr [1:231] "Aeroad" "Aeroad" "Aeroad" "Aeroad" ...
+ $ gender                   : chr [1:231] "unisex" "unisex" "unisex" "unisex" ...
+ $ url                      : chr [1:231] "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-sl-disc-8.0-di2/2875.html" "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-slx-disc-9.0-etap/2873.html" "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-slx-disc-9.0-di2/2874.html" "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-sl-disc-8.0-etap/2876.html" ...
+ $ Frame                    : chr [1:231] "Canyon Aeroad CF SL Disc" "Canyon Aeroad CF SLX Disc" "Canyon Aeroad CF SLX Disc" "Canyon Aeroad CF SL Disc" ...
+ $ Fork                     : chr [1:231] "Canyon FK0041 CF SLX Disc" "Canyon FK0041 CF SLX Disc" "Canyon FK0041 CF SLX Disc" "Canyon FK0041 CF SLX Disc" ...
+ $ Rear Derailleur          : chr [1:231] "Shimano Ultegra Di2 R8050 SS" "SRAM RED eTap AXS, 12-speed" "Shimano Dura-Ace Di2 R9150, 11-speed" "SRAM Force eTap AXS, 12-speed" ...
+ $ Front Derailleur         : chr [1:231] "Shimano Ultegra Di2 R8050" "SRAM RED eTap AXS" "Shimano Dura-Ace Di2 R9150" "SRAM Force eTap AXS" ...
+ $ Cassette                 : chr [1:231] "Shimano Ultegra R8000, 11-speed, 11-28T" "SRAM RED XG-1290, 12-speed, 10-28" "Shimano Dura-Ace R9100, 11-speed, 11-28" "SRAM Force XG-1270, 12-speed, 10-28" ...
+ $ Crank                    : chr [1:231] "Shimano Ultegra R8000" "SRAM RED D1" "Shimano Dura-Ace R9100 PM" "SRAM Force D1" ...
+ $ Bottom bracket           : chr [1:231] "Shimano Pressfit BB72" "SRAM Pressfit RED DUB" "Shimano Pressfit BB92" "SRAM Pressfit RED DUB" ...
+ $ Thru Axle                : chr [1:231] "Canyon Thru Axle" "Canyon Thru Axle" "Canyon Thru Axle" "Canyon Thru Axle" ...
+ $ Cockpit                  : chr [1:231] "Canyon H36 Aerocockpit CF" "Canyon H36 Aerocockpit CF" "Canyon H36 Aerocockpit CF" "Canyon H36 Aerocockpit CF" ...
+ $ Saddle                   : chr [1:231] "Selle Italia SLR" "Selle Italia SLR" "Selle Italia SLR" "Selle Italia SLR" ...
+ $ Seatpost                 : chr [1:231] "Canyon S27 Aero VCLS CF" "Canyon S27 Aero VCLS CF" "Canyon S27 Aero VCLS CF" "Canyon S27 Aero VCLS CF" ...
+ $ Pedals                   : chr [1:231] "None included" "None included" "None included" "None included" ...
+ $ Derailleur hanger        : chr [1:231] "Shop Derailleur Hanger GP0211-01" "Shop Derailleur Hanger GP0211-01" "Shop Derailleur Hanger GP0211-01" "Shop Derailleur Hanger GP0211-01" ...
+ $ Battery                  : chr [1:231] "" "SRAM eTap Powerpack" "" "SRAM eTap Powerpack" ...
+ $ Brake                    : chr [1:231] "" "" "" "" ...
+ $ Shift Lever              : chr [1:231] "" "" "" "" ...
+ $ Chain                    : chr [1:231] "" "" "" "" ...
+ $ Stem                     : chr [1:231] "" "" "" "" ...
+ $ Handlebar                : chr [1:231] "" "" "" "" ...
+ $ Headset                  : chr [1:231] "" "" "" "" ...
+ $ Motor                    : chr [1:231] "" "" "" "" ...
+ $ Battery Charger          : chr [1:231] "" "" "" "" ...
+ $ Flat Pedals              : chr [1:231] "" "" "" "" ...
+ $ Chainguard               : chr [1:231] "" "" "" "" ...
+ $ Aero Bar                 : chr [1:231] "" "" "" "" ...
+ $ Brake Lever / Master     : chr [1:231] "" "" "" "" ...
+ $ Wheel Tire System        : chr [1:231] "" "" "" "" ...
+ $ Suspension Fork          : chr [1:231] "" "" "" "" ...
+ $ Disc Brake               : chr [1:231] "" "" "" "" ...
+ $ Grips                    : chr [1:231] "" "" "" "" ...
+ $ Chainring                : chr [1:231] "" "" "" "" ...
+ $ Display                  : chr [1:231] "" "" "" "" ...
+ $ Modeswitch               : chr [1:231] "" "" "" "" ...
+ $ Rear Shock               : chr [1:231] "" "" "" "" ...
+ $ Light                    : chr [1:231] "" "" "" "" ...
+ $ Fender                   : chr [1:231] "" "" "" "" ...
+ $ Bike Racks               : chr [1:231] "" "" "" "" ...
+ $ Brake 1                  : chr [1:231] "" "" "" "" ...
+ $ Brake 2                  : chr [1:231] "" "" "" "" ...
+ $ Shift-/ Brake Lever 1    : chr [1:231] "Shimano Ultegra Di2 R8070, 11-speed" "SRAM RED eTap AXS HRD, 12-speed" "Shimano Dura Ace Di2 R9170, 11-speed" "SRAM Force eTap AXS, 12-speed" ...
+ $ Shift-/ Brake Lever 2    : chr [1:231] "Shimano Ultegra Di2 R8070, 11-speed" "SRAM RED eTap AXS HRD, 12-speed" "Shimano Dura Ace Di2 R9170, 11-speed" "SRAM Force eTap AXS, 12-speed" ...
+ $ Wheel 1                  : chr [1:231] "DT Swiss ARC 1400 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1400 Dicut" ...
+ $ Wheel 2                  : chr [1:231] "DT Swiss ARC 1400 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1400 Dicut" ...
+ $ Tyre 1                   : chr [1:231] "Continental Grand Prix 5000 / Attack  23 mm" "Continental Grand Prix 5000 / Attack  23 mm" "Continental Grand Prix 5000 / Attack  23 mm" "Continental Grand Prix 5000 / Attack  23 mm" ...
+ $ Tyre 2                   : chr [1:231] "Continental Grand Prix 5000, 25 mm" "Continental Grand Prix 5000, 25 mm" "Continental Grand Prix 5000, 25 mm" "Continental Grand Prix 5000, 25 mm" ...
+ $ Handlebar Tape 1         : chr [1:231] "Canyon Ergospeed Gel" "Canyon Ergospeed Gel" "Canyon Ergospeed Gel" "Canyon Ergospeed Gel" ...
+ $ Handlebar Tape 2         : chr [1:231] "Canyon bar-end plug" "Canyon bar-end plug" "Canyon bar-end plug" "Canyon bar-end plug" ...
+ $ Manuals and Accessories 1: chr [1:231] "Canyon tool case" "Canyon tool case" "Canyon tool case" "Canyon tool case" ...
+ $ Manuals and Accessories 2: chr [1:231] "DT Swiss warranty &amp; intended use manual" "CAYN INSTRUCTION SRAM ETP" "DT Swiss warranty &amp; intended use manual" "CAYN INSTRUCTION SRAM ETP" ...
+ $ Manuals and Accessories 3: chr [1:231] "Canyon starter box" "Canyon starter box" "Canyon starter box" "Canyon starter box" ...
+ $ Manuals and Accessories 4: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 5: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 6: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 7: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 8: chr [1:231] "" "" "" "" ...
+ $ Brake Rotor              :List of 231
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Campagnolo 03 AFS"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "SRAM Centerline X Rounded Edges"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Campagnolo 03 AFS"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Campagnolo 03 AFS"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT10"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline X Rounded Edges"
+  ..$ : chr "Shimano RT-MT900"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "Shimano RT66"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline X Rounded Edges"
+  ..$ : chr "Shimano RT-MT900"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Paceline"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  .. [list output truncated]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 'Brake Rotor' and any other list columns to character or factor</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>bike_features_tbl <span class="ot">&lt;-</span> bike_features_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.list), <span class="sc">~</span> <span class="fu">as.character</span>(<span class="fu">unlist</span>(.))))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify and remove categorical variables with only one level</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>categorical_vars <span class="ot">&lt;-</span> bike_features_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.character)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), n_distinct)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"n_levels"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_levels <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(variable)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>bike_features_tbl <span class="ot">&lt;-</span> bike_features_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">all_of</span>(categorical_vars))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a recipe for data preprocessing</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>recipe_obj <span class="ot">&lt;-</span> <span class="fu">recipe</span>(price <span class="sc">~</span> ., <span class="at">data =</span> bike_features_tbl) <span class="sc">%&gt;%</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Handle missing values (impute using median for numeric and mode for categorical)</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_mode</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Normalize numeric data</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># One-hot encode categorical variables</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>())</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the recipe (estimate required parameters)</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>prep_obj <span class="ot">&lt;-</span> <span class="fu">prep</span>(recipe_obj, <span class="at">training =</span> bike_features_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+New names:
+• `Disc Brake_Shimano.MT200...UR300.` -&gt; `Disc
+  Brake_Shimano.MT200...UR300....1181`
+• `Disc Brake_Shimano.MT201` -&gt; `Disc Brake_Shimano.MT201...1182`
+• `Disc Brake_Shimano.MT200...UR300.` -&gt; `Disc
+  Brake_Shimano.MT200...UR300....1199`
+• `Disc Brake_Shimano.MT201` -&gt; `Disc Brake_Shimano.MT201...1200`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the recipe to the dataset</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>processed_data <span class="ot">&lt;-</span> <span class="fu">bake</span>(prep_obj, <span class="at">new_data =</span> bike_features_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+New names:
+• `Disc Brake_Shimano.MT200...UR300.` -&gt; `Disc
+  Brake_Shimano.MT200...UR300....1181`
+• `Disc Brake_Shimano.MT201` -&gt; `Disc Brake_Shimano.MT201...1182`
+• `Disc Brake_Shimano.MT200...UR300.` -&gt; `Disc
+  Brake_Shimano.MT200...UR300....1199`
+• `Disc Brake_Shimano.MT201` -&gt; `Disc Brake_Shimano.MT201...1200`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows of the processed data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(processed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 1,684
+  bike_id model_year weight price model_Aeroad.CF.SL.8.0 model_Aeroad.CF.SL.8.…¹
+    &lt;dbl&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;                  &lt;dbl&gt;                   &lt;dbl&gt;
+1   1.86      -0.668 -0.905  4579                      0                       0
+2   1.85      -0.668 -0.977  6919                      0                       0
+3   1.85      -0.668 -1.01   6429                      0                       0
+4   1.86      -0.668 -0.876  5069                      0                       0
+5   1.87      -0.668 -0.855  3609                      0                       0
+6  -0.868     -2.55  -1.08   6139                      0                       0
+# ℹ abbreviated name: ¹​model_Aeroad.CF.SL.8.0.Di2
+# ℹ 1,678 more variables: model_Aeroad.CF.SL.Disc.8.0 &lt;dbl&gt;,
+#   model_Aeroad.CF.SL.Disc.8.0.Di2 &lt;dbl&gt;,
+#   model_Aeroad.CF.SL.Disc.8.0.ETAP &lt;dbl&gt;, model_Aeroad.CF.SLX.9.0.Di2 &lt;dbl&gt;,
+#   model_Aeroad.CF.SLX.9.0.SL &lt;dbl&gt;, model_Aeroad.CF.SLX.Disc.9.0.Di2 &lt;dbl&gt;,
+#   model_Aeroad.CF.SLX.Disc.9.0.ETAP &lt;dbl&gt;, model_Aeroad.WMN.CF.SL.8.0 &lt;dbl&gt;,
+#   model_Commuter.3.0 &lt;dbl&gt;, model_Commuter.4.0 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(recipes)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parsnip)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(workflows)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>bike_features_tbl <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">ADMIN</span><span class="sc">\\</span><span class="st">Downloads</span><span class="sc">\\</span><span class="st">bike_features_tbl.rds"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the structure of the dataset</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(bike_features_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [231 × 67] (S3: tbl_df/tbl/data.frame)
+ $ bike_id                  : num [1:231] 2875 2873 2874 2876 2877 ...
+ $ model                    : chr [1:231] "Aeroad CF SL Disc 8.0 Di2" "Aeroad CF SLX Disc 9.0 ETAP" "Aeroad CF SLX Disc 9.0 Di2" "Aeroad CF SL Disc 8.0 ETAP" ...
+ $ model_year               : num [1:231] 2020 2020 2020 2020 2020 ...
+ $ frame_material           : chr [1:231] "carbon" "carbon" "carbon" "carbon" ...
+ $ weight                   : num [1:231] 7.6 7.27 7.1 7.73 7.83 6.8 6.8 7.6 7.3 7.2 ...
+ $ price                    : num [1:231] 4579 6919 6429 5069 3609 ...
+ $ category_1               : chr [1:231] "Road" "Road" "Road" "Road" ...
+ $ category_2               : chr [1:231] "Race" "Race" "Race" "Race" ...
+ $ category_3               : chr [1:231] "Aeroad" "Aeroad" "Aeroad" "Aeroad" ...
+ $ gender                   : chr [1:231] "unisex" "unisex" "unisex" "unisex" ...
+ $ url                      : chr [1:231] "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-sl-disc-8.0-di2/2875.html" "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-slx-disc-9.0-etap/2873.html" "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-slx-disc-9.0-di2/2874.html" "https://www.canyon.com/en-de/road-bikes/race-bikes/aeroad/aeroad-cf-sl-disc-8.0-etap/2876.html" ...
+ $ Frame                    : chr [1:231] "Canyon Aeroad CF SL Disc" "Canyon Aeroad CF SLX Disc" "Canyon Aeroad CF SLX Disc" "Canyon Aeroad CF SL Disc" ...
+ $ Fork                     : chr [1:231] "Canyon FK0041 CF SLX Disc" "Canyon FK0041 CF SLX Disc" "Canyon FK0041 CF SLX Disc" "Canyon FK0041 CF SLX Disc" ...
+ $ Rear Derailleur          : chr [1:231] "Shimano Ultegra Di2 R8050 SS" "SRAM RED eTap AXS, 12-speed" "Shimano Dura-Ace Di2 R9150, 11-speed" "SRAM Force eTap AXS, 12-speed" ...
+ $ Front Derailleur         : chr [1:231] "Shimano Ultegra Di2 R8050" "SRAM RED eTap AXS" "Shimano Dura-Ace Di2 R9150" "SRAM Force eTap AXS" ...
+ $ Cassette                 : chr [1:231] "Shimano Ultegra R8000, 11-speed, 11-28T" "SRAM RED XG-1290, 12-speed, 10-28" "Shimano Dura-Ace R9100, 11-speed, 11-28" "SRAM Force XG-1270, 12-speed, 10-28" ...
+ $ Crank                    : chr [1:231] "Shimano Ultegra R8000" "SRAM RED D1" "Shimano Dura-Ace R9100 PM" "SRAM Force D1" ...
+ $ Bottom bracket           : chr [1:231] "Shimano Pressfit BB72" "SRAM Pressfit RED DUB" "Shimano Pressfit BB92" "SRAM Pressfit RED DUB" ...
+ $ Thru Axle                : chr [1:231] "Canyon Thru Axle" "Canyon Thru Axle" "Canyon Thru Axle" "Canyon Thru Axle" ...
+ $ Cockpit                  : chr [1:231] "Canyon H36 Aerocockpit CF" "Canyon H36 Aerocockpit CF" "Canyon H36 Aerocockpit CF" "Canyon H36 Aerocockpit CF" ...
+ $ Saddle                   : chr [1:231] "Selle Italia SLR" "Selle Italia SLR" "Selle Italia SLR" "Selle Italia SLR" ...
+ $ Seatpost                 : chr [1:231] "Canyon S27 Aero VCLS CF" "Canyon S27 Aero VCLS CF" "Canyon S27 Aero VCLS CF" "Canyon S27 Aero VCLS CF" ...
+ $ Pedals                   : chr [1:231] "None included" "None included" "None included" "None included" ...
+ $ Derailleur hanger        : chr [1:231] "Shop Derailleur Hanger GP0211-01" "Shop Derailleur Hanger GP0211-01" "Shop Derailleur Hanger GP0211-01" "Shop Derailleur Hanger GP0211-01" ...
+ $ Battery                  : chr [1:231] "" "SRAM eTap Powerpack" "" "SRAM eTap Powerpack" ...
+ $ Brake                    : chr [1:231] "" "" "" "" ...
+ $ Shift Lever              : chr [1:231] "" "" "" "" ...
+ $ Chain                    : chr [1:231] "" "" "" "" ...
+ $ Stem                     : chr [1:231] "" "" "" "" ...
+ $ Handlebar                : chr [1:231] "" "" "" "" ...
+ $ Headset                  : chr [1:231] "" "" "" "" ...
+ $ Motor                    : chr [1:231] "" "" "" "" ...
+ $ Battery Charger          : chr [1:231] "" "" "" "" ...
+ $ Flat Pedals              : chr [1:231] "" "" "" "" ...
+ $ Chainguard               : chr [1:231] "" "" "" "" ...
+ $ Aero Bar                 : chr [1:231] "" "" "" "" ...
+ $ Brake Lever / Master     : chr [1:231] "" "" "" "" ...
+ $ Wheel Tire System        : chr [1:231] "" "" "" "" ...
+ $ Suspension Fork          : chr [1:231] "" "" "" "" ...
+ $ Disc Brake               : chr [1:231] "" "" "" "" ...
+ $ Grips                    : chr [1:231] "" "" "" "" ...
+ $ Chainring                : chr [1:231] "" "" "" "" ...
+ $ Display                  : chr [1:231] "" "" "" "" ...
+ $ Modeswitch               : chr [1:231] "" "" "" "" ...
+ $ Rear Shock               : chr [1:231] "" "" "" "" ...
+ $ Light                    : chr [1:231] "" "" "" "" ...
+ $ Fender                   : chr [1:231] "" "" "" "" ...
+ $ Bike Racks               : chr [1:231] "" "" "" "" ...
+ $ Brake 1                  : chr [1:231] "" "" "" "" ...
+ $ Brake 2                  : chr [1:231] "" "" "" "" ...
+ $ Shift-/ Brake Lever 1    : chr [1:231] "Shimano Ultegra Di2 R8070, 11-speed" "SRAM RED eTap AXS HRD, 12-speed" "Shimano Dura Ace Di2 R9170, 11-speed" "SRAM Force eTap AXS, 12-speed" ...
+ $ Shift-/ Brake Lever 2    : chr [1:231] "Shimano Ultegra Di2 R8070, 11-speed" "SRAM RED eTap AXS HRD, 12-speed" "Shimano Dura Ace Di2 R9170, 11-speed" "SRAM Force eTap AXS, 12-speed" ...
+ $ Wheel 1                  : chr [1:231] "DT Swiss ARC 1400 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1400 Dicut" ...
+ $ Wheel 2                  : chr [1:231] "DT Swiss ARC 1400 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1100 Dicut" "DT Swiss ARC 1400 Dicut" ...
+ $ Tyre 1                   : chr [1:231] "Continental Grand Prix 5000 / Attack  23 mm" "Continental Grand Prix 5000 / Attack  23 mm" "Continental Grand Prix 5000 / Attack  23 mm" "Continental Grand Prix 5000 / Attack  23 mm" ...
+ $ Tyre 2                   : chr [1:231] "Continental Grand Prix 5000, 25 mm" "Continental Grand Prix 5000, 25 mm" "Continental Grand Prix 5000, 25 mm" "Continental Grand Prix 5000, 25 mm" ...
+ $ Handlebar Tape 1         : chr [1:231] "Canyon Ergospeed Gel" "Canyon Ergospeed Gel" "Canyon Ergospeed Gel" "Canyon Ergospeed Gel" ...
+ $ Handlebar Tape 2         : chr [1:231] "Canyon bar-end plug" "Canyon bar-end plug" "Canyon bar-end plug" "Canyon bar-end plug" ...
+ $ Manuals and Accessories 1: chr [1:231] "Canyon tool case" "Canyon tool case" "Canyon tool case" "Canyon tool case" ...
+ $ Manuals and Accessories 2: chr [1:231] "DT Swiss warranty &amp; intended use manual" "CAYN INSTRUCTION SRAM ETP" "DT Swiss warranty &amp; intended use manual" "CAYN INSTRUCTION SRAM ETP" ...
+ $ Manuals and Accessories 3: chr [1:231] "Canyon starter box" "Canyon starter box" "Canyon starter box" "Canyon starter box" ...
+ $ Manuals and Accessories 4: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 5: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 6: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 7: chr [1:231] "" "" "" "" ...
+ $ Manuals and Accessories 8: chr [1:231] "" "" "" "" ...
+ $ Brake Rotor              :List of 231
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Campagnolo 03 AFS"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "SRAM Centerline X Rounded Edges"
+  ..$ : chr "SRAM Centerline Rounded Edges"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Campagnolo 03 AFS"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT900"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Campagnolo 03 AFS"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT70"
+  ..$ : chr "Shimano RT10"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline X Rounded Edges"
+  ..$ : chr "Shimano RT-MT900"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "Shimano RT66"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline X Rounded Edges"
+  ..$ : chr "Shimano RT-MT900"
+  ..$ : chr "SRAM Centerline, 180mm"
+  ..$ : chr "SRAM Centerline X"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "SRAM Paceline"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  ..$ : chr "Shimano RT800"
+  .. [list output truncated]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 'Brake Rotor' and any other list columns to character or factor</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>bike_features_tbl <span class="ot">&lt;-</span> bike_features_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.list), <span class="sc">~</span> <span class="fu">as.character</span>(<span class="fu">unlist</span>(.))))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify and remove categorical variables with only one level</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>categorical_vars <span class="ot">&lt;-</span> bike_features_tbl <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">where</span>(is.character)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), n_distinct)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"variable"</span>, <span class="at">values_to =</span> <span class="st">"n_levels"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_levels <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(variable)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>bike_features_tbl <span class="ot">&lt;-</span> bike_features_tbl <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">all_of</span>(categorical_vars))</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a recipe for data preprocessing</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>recipe_obj <span class="ot">&lt;-</span> <span class="fu">recipe</span>(price <span class="sc">~</span> ., <span class="at">data =</span> bike_features_tbl) <span class="sc">%&gt;%</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Handle missing values (impute using median for numeric and mode for categorical)</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_median</span>(<span class="fu">all_numeric</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_impute_mode</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Normalize numeric data</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># One-hot encode categorical variables</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_dummy</span>(<span class="fu">all_nominal</span>(), <span class="sc">-</span><span class="fu">all_outcomes</span>())</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify a linear regression model</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Bundle the recipe and model into a workflow</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>workflow_obj <span class="ot">&lt;-</span> <span class="fu">workflow</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_recipe</span>(recipe_obj) <span class="sc">%&gt;%</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_model</span>(linear_model)</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the workflow to the data</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>fitted_workflow <span class="ot">&lt;-</span> <span class="fu">fit</span>(workflow_obj, <span class="at">data =</span> bike_features_tbl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+New names:
+New names:
+• `Disc Brake_Shimano.MT200...UR300.` -&gt; `Disc
+  Brake_Shimano.MT200...UR300....1181`
+• `Disc Brake_Shimano.MT201` -&gt; `Disc Brake_Shimano.MT201...1182`
+• `Disc Brake_Shimano.MT200...UR300.` -&gt; `Disc
+  Brake_Shimano.MT200...UR300....1199`
+• `Disc Brake_Shimano.MT201` -&gt; `Disc Brake_Shimano.MT201...1200`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the fitted workflow</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>fitted_workflow</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>══ Workflow [trained] ══════════════════════════════════════════════════════════
+Preprocessor: Recipe
+Model: linear_reg()
+
+── Preprocessor ────────────────────────────────────────────────────────────────
+4 Recipe Steps
+
+• step_impute_median()
+• step_impute_mode()
+• step_normalize()
+• step_dummy()
+
+── Model ───────────────────────────────────────────────────────────────────────
+
+Call:
+stats::lm(formula = ..y ~ ., data = data)
+
+Coefficients:
+                                                                                                     (Intercept)  
+                                                                                                          -31298  
+                                                                                                         bike_id  
+                                                                                                           -8636  
+                                                                                                      model_year  
+                                                                                                            5153  
+                                                                                                          weight  
+                                                                                                          -16737  
+                                                                                          model_Aeroad.CF.SL.8.0  
+                                                                                                            8839  
+                                                                                      model_Aeroad.CF.SL.8.0.Di2  
+                                                                                                            9745  
+                                                                                     model_Aeroad.CF.SL.Disc.8.0  
+                                                                                                           40155  
+                                                                                 model_Aeroad.CF.SL.Disc.8.0.Di2  
+                                                                                                           40211  
+                                                                                model_Aeroad.CF.SL.Disc.8.0.ETAP  
+                                                                                                           41213  
+                                                                                     model_Aeroad.CF.SLX.9.0.Di2  
+                                                                                                           19385  
+                                                                                      model_Aeroad.CF.SLX.9.0.SL  
+                                                                                                           25015  
+                                                                                model_Aeroad.CF.SLX.Disc.9.0.Di2  
+                                                                                                           40196  
+                                                                               model_Aeroad.CF.SLX.Disc.9.0.ETAP  
+                                                                                                           41271  
+                                                                                      model_Aeroad.WMN.CF.SL.8.0  
+                                                                                                           10058  
+                                                                                              model_Commuter.3.0  
+                                                                                                           15496  
+                                                                                              model_Commuter.4.0  
+                                                                                                           19827  
+                                                                                              model_Commuter.5.0  
+                                                                                                           20153  
+                                                                                              model_Commuter.6.0  
+                                                                                                           19597  
+                                                                                              model_Commuter.8.0  
+                                                                                                           21607  
+                                                                                        model_Commuter.Sport.5.0  
+                                                                                                           15081  
+                                                                                        model_Commuter.Sport.8.0  
+                                                                                                           15086  
+                                                                                             model_Commuter.ON.7  
+                                                                                                           46951  
+                                                                                         model_Commuter.ON.7.WMN  
+
+...
+and 3324 more lines.</code></pre>
+</div>
+</div>
+<p>Automated Machine Learning with H20 (I)</p>
 <ol type="1">
-<li><p>Accept the assignment and get your own github repo.</p></li>
-<li><p>Blog/journal what you are doing in R, by editing the <code>.qmd</code> files.</p></li>
-<li><p>See the links page for lots of helpful links on learning R.</p></li>
-<li><p>Change everything to make it your own.</p></li>
-<li><p>Make sure to render you website everytime before you want to upload changes</p></li>
+<li><ol start="3" type="a">
+<li>Those that are leaving have a lower Monthly Income</li>
+</ol></li>
+<li><ol start="3" type="a">
+<li>Those that are leaving have lower Percent Salary Hike</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>Those that are staying have a higher stock option level</li>
+</ol></li>
+<li><ol type="a">
+<li>A higher proportion of those leaving have a low environment satisfaction level</li>
+</ol></li>
+<li><ol type="a">
+<li>Those that are leaving have higher density of 2’s and 3’s</li>
+</ol></li>
+<li><ol type="a">
+<li>Those that are leaving have a lower density of 3’s and 4’s</li>
+</ol></li>
+<li><ol type="a">
+<li>The proportion of those leaving that are working Over Time are high compared to those that are not leaving</li>
+</ol></li>
+<li><ol type="a">
+<li>People that leave tend to have more annual trainings</li>
+</ol></li>
+<li><ol start="2" type="a">
+<li>People that leave tend to have less working years at the company</li>
+</ol></li>
+<li><ol type="a">
+<li>Those that are leaving have more years since last promotion than those that are staying</li>
+</ol></li>
 </ol>
+<p>Automated Machine Learning with H20 (II)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required library</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">ADMIN</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">product_backorders.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 19053 Columns: 23
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (7): potential_issue, deck_risk, oe_constraint, ppap_risk, stop_auto_bu...
+dbl (16): sku, national_inv, lead_time, in_transit_qty, forecast_3_month, fo...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset to understand its structure</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 23
+     sku national_inv lead_time in_transit_qty forecast_3_month forecast_6_month
+   &lt;dbl&gt;        &lt;dbl&gt;     &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;            &lt;dbl&gt;
+1 1.11e6            0         8              1                6                6
+2 1.11e6            0         8              0                2                3
+3 1.11e6           20         2              0               45               99
+4 1.11e6            0         8              0                9               14
+5 1.11e6            0        12              0               31               31
+6 1.12e6           55         8              0              216              360
+# ℹ 17 more variables: forecast_9_month &lt;dbl&gt;, sales_1_month &lt;dbl&gt;,
+#   sales_3_month &lt;dbl&gt;, sales_6_month &lt;dbl&gt;, sales_9_month &lt;dbl&gt;,
+#   min_bank &lt;dbl&gt;, potential_issue &lt;chr&gt;, pieces_past_due &lt;dbl&gt;,
+#   perf_6_month_avg &lt;dbl&gt;, perf_12_month_avg &lt;dbl&gt;, local_bo_qty &lt;dbl&gt;,
+#   deck_risk &lt;chr&gt;, oe_constraint &lt;chr&gt;, ppap_risk &lt;chr&gt;, stop_auto_buy &lt;chr&gt;,
+#   rev_stop &lt;chr&gt;, went_on_backorder &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'went_on_backorder' is the target variable</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>response <span class="ot">&lt;-</span> <span class="st">"went_on_backorder"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>predictors <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(data), response)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the predictor and response data frames</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> data[, predictors]</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> data[, response]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required library</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(h2o)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+----------------------------------------------------------------------
+
+Your next step is to start H2O:
+    &gt; h2o.init()
+
+For H2O package documentation, ask for help:
+    &gt; ??h2o
+
+After starting H2O, you can use the Web UI at http://localhost:54321
+For more information visit https://docs.h2o.ai
+
+----------------------------------------------------------------------</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'h2o'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:lubridate':
+
+    day, hour, month, week, year</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    cor, sd, var</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    %*%, %in%, &amp;&amp;, ||, apply, as.factor, as.numeric, colnames,
+    colnames&lt;-, ifelse, is.character, is.factor, is.numeric, log,
+    log10, log1p, log2, round, signif, trunc</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize and connect to the H2O cluster</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">h2o.init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Connection successful!
+
+R is connected to the H2O cluster: 
+    H2O cluster uptime:         18 minutes 3 seconds 
+    H2O cluster timezone:       Europe/Berlin 
+    H2O data parsing timezone:  UTC 
+    H2O cluster version:        3.44.0.3 
+    H2O cluster version age:    6 months and 3 days 
+    H2O cluster name:           H2O_started_from_R_ADMIN_yvc514 
+    H2O cluster total nodes:    1 
+    H2O cluster total memory:   1.86 GB 
+    H2O cluster total cores:    8 
+    H2O cluster allowed cores:  8 
+    H2O cluster healthy:        TRUE 
+    H2O Connection ip:          localhost 
+    H2O Connection port:        54321 
+    H2O Connection proxy:       NA 
+    H2O Internal Security:      FALSE 
+    R Version:                  R version 4.3.3 (2024-02-29 ucrt) </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in h2o.clusterInfo(): 
+Your H2O cluster version is (6 months and 3 days) old. There may be a newer version available.
+Please download and install the latest version from: https://h2o-release.s3.amazonaws.com/h2o/latest_stable.html</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the full path to the dataset</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dataset_path <span class="ot">&lt;-</span> <span class="st">"C:/Users/ADMIN/OneDrive/Desktop/product_backorders.csv"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">h2o.importFile</span>(dataset_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the dataset to understand its structure</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">h2o.head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      sku national_inv lead_time in_transit_qty forecast_3_month
+1 1113121            0         8              1                6
+2 1113268            0         8              0                2
+3 1113874           20         2              0               45
+4 1114222            0         8              0                9
+5 1114823            0        12              0               31
+6 1115453           55         8              0              216
+  forecast_6_month forecast_9_month sales_1_month sales_3_month sales_6_month
+1                6                6             0             4             9
+2                3                4             1             2             3
+3               99              153            16            42            80
+4               14               21             5            17            36
+5               31               31             7            15            33
+6              360              492            30           108           275
+  sales_9_month min_bank potential_issue pieces_past_due perf_6_month_avg
+1            12        0              No               1             0.90
+2             3        0              No               0             0.96
+3           111       10              No               0             0.81
+4            43        0              No               0             0.96
+5            47        2              No               3             0.98
+6           340       51              No               0             0.00
+  perf_12_month_avg local_bo_qty deck_risk oe_constraint ppap_risk
+1              0.89            0        No            No        No
+2              0.97            0        No            No        No
+3              0.88            0        No            No        No
+4              0.98            0        No            No        No
+5              0.98            0        No            No        No
+6              0.00            0        No            No       Yes
+  stop_auto_buy rev_stop went_on_backorder
+1           Yes       No               Yes
+2           Yes       No               Yes
+3           Yes       No               Yes
+4           Yes       No               Yes
+5           Yes       No               Yes
+6           Yes       No               Yes</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'went_on_backorder' is the target variable</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>response <span class="ot">&lt;-</span> <span class="st">"went_on_backorder"</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>predictors <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(data), response)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Run AutoML with the loaded dataset</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>aml <span class="ot">&lt;-</span> <span class="fu">h2o.automl</span>(<span class="at">x =</span> predictors, <span class="at">y =</span> response, <span class="at">training_frame =</span> data,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">max_runtime_secs =</span> <span class="dv">300</span>,  <span class="co"># Increase to 5 minutes or more</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">max_models =</span> <span class="dv">20</span>)         <span class="co"># Try up to 20 models</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |=                                                                     |   1%
+13:01:21.981: AutoML: XGBoost is not available; skipping it.
+  |                                                                            
+  |==                                                                    |   3%
+  |                                                                            
+  |===                                                                   |   4%
+  |                                                                            
+  |====                                                                  |   6%
+  |                                                                            
+  |=====                                                                 |   7%
+  |                                                                            
+  |======                                                                |   9%
+  |                                                                            
+  |=======                                                               |  10%
+  |                                                                            
+  |========                                                              |  11%
+  |                                                                            
+  |========                                                              |  12%
+  |                                                                            
+  |=========                                                             |  13%
+  |                                                                            
+  |==========                                                            |  14%
+  |                                                                            
+  |==========                                                            |  15%
+  |                                                                            
+  |===========                                                           |  16%
+  |                                                                            
+  |============                                                          |  17%
+  |                                                                            
+  |=============                                                         |  18%
+  |                                                                            
+  |==============                                                        |  19%
+  |                                                                            
+  |==============                                                        |  20%
+  |                                                                            
+  |===============                                                       |  21%
+  |                                                                            
+  |================                                                      |  23%
+  |                                                                            
+  |=================                                                     |  24%
+  |                                                                            
+  |=================                                                     |  25%
+  |                                                                            
+  |==================                                                    |  26%
+  |                                                                            
+  |===================                                                   |  27%
+  |                                                                            
+  |====================                                                  |  28%
+  |                                                                            
+  |====================                                                  |  29%
+  |                                                                            
+  |=====================                                                 |  30%
+  |                                                                            
+  |======================                                                |  31%
+  |                                                                            
+  |======================                                                |  32%
+  |                                                                            
+  |=======================                                               |  33%
+  |                                                                            
+  |========================                                              |  34%
+  |                                                                            
+  |========================                                              |  35%
+  |                                                                            
+  |=========================                                             |  36%
+  |                                                                            
+  |==========================                                            |  37%
+  |                                                                            
+  |===========================                                           |  38%
+  |                                                                            
+  |===========================                                           |  39%
+  |                                                                            
+  |============================                                          |  40%
+  |                                                                            
+  |=============================                                         |  41%
+  |                                                                            
+  |=============================                                         |  42%
+  |                                                                            
+  |==============================                                        |  43%
+  |                                                                            
+  |===============================                                       |  44%
+  |                                                                            
+  |===============================                                       |  45%
+  |                                                                            
+  |================================                                      |  46%
+  |                                                                            
+  |=================================                                     |  47%
+  |                                                                            
+  |=================================                                     |  48%
+  |                                                                            
+  |==================================                                    |  49%
+  |                                                                            
+  |===================================                                   |  50%
+  |                                                                            
+  |===================================                                   |  51%
+  |                                                                            
+  |====================================                                  |  52%
+  |                                                                            
+  |=====================================                                 |  52%
+  |                                                                            
+  |=====================================                                 |  53%
+  |                                                                            
+  |======================================                                |  54%
+  |                                                                            
+  |=======================================                               |  55%
+  |                                                                            
+  |=======================================                               |  56%
+  |                                                                            
+  |========================================                              |  57%
+  |                                                                            
+  |=========================================                             |  58%
+  |                                                                            
+  |=========================================                             |  59%
+  |                                                                            
+  |==========================================                            |  60%
+  |                                                                            
+  |===========================================                           |  62%
+  |                                                                            
+  |============================================                          |  63%
+  |                                                                            
+  |=============================================                         |  64%
+  |                                                                            
+  |==============================================                        |  65%
+  |                                                                            
+  |==============================================                        |  66%
+  |                                                                            
+  |===============================================                       |  68%
+  |                                                                            
+  |================================================                      |  69%
+  |                                                                            
+  |=================================================                     |  70%
+  |                                                                            
+  |==================================================                    |  71%
+  |                                                                            
+  |==================================================                    |  72%
+  |                                                                            
+  |===================================================                   |  73%
+  |                                                                            
+  |====================================================                  |  74%
+  |                                                                            
+  |=====================================================                 |  76%
+  |                                                                            
+  |======================================================                |  77%
+  |                                                                            
+  |=======================================================               |  78%
+  |                                                                            
+  |=======================================================               |  79%
+  |                                                                            
+  |========================================================              |  80%
+  |                                                                            
+  |=========================================================             |  82%
+  |                                                                            
+  |==========================================================            |  83%
+  |                                                                            
+  |===========================================================           |  84%
+  |                                                                            
+  |============================================================          |  85%
+  |                                                                            
+  |============================================================          |  86%
+  |                                                                            
+  |==============================================================        |  88%
+  |                                                                            
+  |===============================================================       |  89%
+  |                                                                            
+  |================================================================      |  91%
+  |                                                                            
+  |=================================================================     |  92%
+  |                                                                            
+  |==================================================================    |  94%
+  |                                                                            
+  |==================================================================    |  95%
+  |                                                                            
+  |===================================================================   |  96%
+  |                                                                            
+  |====================================================================  |  97%
+  |                                                                            
+  |===================================================================== |  98%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View AutoML leaderboard</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(aml<span class="sc">@</span>leaderboard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                     model_id       auc   logloss     aucpr
+1              GBM_3_AutoML_2_20240624_130121 0.9539554 0.1684250 0.7571471
+2              GBM_4_AutoML_2_20240624_130121 0.9537207 0.1695070 0.7463830
+3 GBM_grid_1_AutoML_2_20240624_130121_model_3 0.9534373 0.1689374 0.7526394
+4 GBM_grid_1_AutoML_2_20240624_130121_model_5 0.9530111 0.1688335 0.7524722
+5              GBM_1_AutoML_2_20240624_130121 0.9516101 0.1693955 0.7505207
+6              GBM_2_AutoML_2_20240624_130121 0.9511549 0.1721753 0.7439772
+  mean_per_class_error      rmse        mse
+1            0.1502081 0.2239039 0.05013295
+2            0.1442061 0.2250250 0.05063626
+3            0.1382065 0.2241113 0.05022586
+4            0.1408246 0.2239215 0.05014083
+5            0.1496343 0.2250060 0.05062768
+6            0.1343922 0.2255797 0.05088622
+
+[14 rows x 7 columns] </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the leader model</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>leader <span class="ot">&lt;-</span> aml<span class="sc">@</span>leader</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the leader model</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">h2o.saveModel</span>(leader, <span class="at">path =</span> <span class="st">"./h2o_leader_model"</span>, <span class="at">force =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:\\Users\\ADMIN\\OneDrive\\Desktop\\ss24-bdml-harshithapriya\\h2o_leader_model\\GBM_3_AutoML_2_20240624_130121"</code></pre>
+</div>
+</div>
+<p>Performance Measures</p>
+<ol type="1">
+<li>Leadership Visualization</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install required packages if not already installed</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"h2o"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"h2o"</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"caret"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"caret"</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"ROCR"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"ROCR"</span>)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"cowplot"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"cowplot"</span>)</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"ggplot2"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)) <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required libraries</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(h2o)</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'caret'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    lift</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'cowplot'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:lubridate':
+
+    stamp</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize and connect to the H2O cluster</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">h2o.init</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Connection successful!
+
+R is connected to the H2O cluster: 
+    H2O cluster uptime:         55 minutes 37 seconds 
+    H2O cluster timezone:       Europe/Berlin 
+    H2O data parsing timezone:  UTC 
+    H2O cluster version:        3.44.0.3 
+    H2O cluster version age:    6 months and 3 days 
+    H2O cluster name:           H2O_started_from_R_ADMIN_yvc514 
+    H2O cluster total nodes:    1 
+    H2O cluster total memory:   1.83 GB 
+    H2O cluster total cores:    8 
+    H2O cluster allowed cores:  8 
+    H2O cluster healthy:        TRUE 
+    H2O Connection ip:          localhost 
+    H2O Connection port:        54321 
+    H2O Connection proxy:       NA 
+    H2O Internal Security:      FALSE 
+    R Version:                  R version 4.3.3 (2024-02-29 ucrt) </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in h2o.clusterInfo(): 
+Your H2O cluster version is (6 months and 3 days) old. There may be a newer version available.
+Please download and install the latest version from: https://h2o-release.s3.amazonaws.com/h2o/latest_stable.html</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and plot the leaderboard</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>leaderboard <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(aml<span class="sc">@</span>leaderboard)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(leaderboard, <span class="fu">aes</span>(<span class="at">x =</span> model_id, <span class="at">y =</span> mean_per_class_error)) <span class="sc">+</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Model"</span>, <span class="at">y =</span> <span class="st">"Mean Per Class Error"</span>, <span class="at">title =</span> <span class="st">"AutoML Leaderboard"</span>) <span class="sc">+</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-6-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Visualize the trade of between the precision and the recall and the optimal threshold</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the best model</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>best_model <span class="ot">&lt;-</span> aml<span class="sc">@</span>leader</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Make predictions on the dataset</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">h2o.predict</span>(best_model, data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  |                                                                            
+  |                                                                      |   0%
+  |                                                                            
+  |======================================================================| 100%</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert predictions to a data frame</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>predictions_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(predictions)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure the actual and predicted vectors are factors with binary classes</span></span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">as.vector</span>(data[[response]]))</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>predicted <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">as.vector</span>(predictions_df<span class="sc">$</span>predict))</span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Check levels to make sure there are only two classes</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(actual) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"no"</span>, <span class="st">"yes"</span>)</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(predicted) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"no"</span>, <span class="st">"yes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate precision and recall for different thresholds</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>pred_obj <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(predicted <span class="sc">==</span> <span class="st">"yes"</span>), <span class="fu">as.numeric</span>(actual <span class="sc">==</span> <span class="st">"yes"</span>))</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>perf <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_obj, <span class="st">"prec"</span>, <span class="st">"rec"</span>)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot precision-recall curve</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>prec_recall_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> perf<span class="sc">@</span>x.values[[<span class="dv">1</span>]], <span class="at">y =</span> perf<span class="sc">@</span>y.values[[<span class="dv">1</span>]]), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Recall"</span>, <span class="at">y =</span> <span class="st">"Precision"</span>, <span class="at">title =</span> <span class="st">"Precision-Recall Curve"</span>)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prec_recall_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-8-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="1">
+<li>ROC Plot</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate ROC curve</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>roc_perf <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_obj, <span class="st">"tpr"</span>, <span class="st">"fpr"</span>)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot ROC curve</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>roc_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> roc_perf<span class="sc">@</span>x.values[[<span class="dv">1</span>]], <span class="at">y =</span> roc_perf<span class="sc">@</span>y.values[[<span class="dv">1</span>]]), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"False Positive Rate"</span>, <span class="at">y =</span> <span class="st">"True Positive Rate"</span>, <span class="at">title =</span> <span class="st">"ROC Curve"</span>)</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(roc_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-9-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Precision Recall Plot</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate precision and recall for different thresholds</span></span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>pred_obj <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(predicted <span class="sc">==</span> <span class="st">"yes"</span>), <span class="fu">as.numeric</span>(actual <span class="sc">==</span> <span class="st">"yes"</span>))</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>perf <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_obj, <span class="st">"prec"</span>, <span class="st">"rec"</span>)</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot precision-recall curve</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>prec_recall_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> perf<span class="sc">@</span>x.values[[<span class="dv">1</span>]], <span class="at">y =</span> perf<span class="sc">@</span>y.values[[<span class="dv">1</span>]]), <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Recall"</span>, <span class="at">y =</span> <span class="st">"Precision"</span>, <span class="at">title =</span> <span class="st">"Precision-Recall Curve"</span>)</span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prec_recall_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-10-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="6" type="1">
+<li>Gain Plot</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cumulative gains</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>gain_data <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_obj, <span class="st">"tpr"</span>, <span class="st">"rpp"</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>gain_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">percentage =</span> gain_data<span class="sc">@</span>x.values[[<span class="dv">1</span>]], <span class="at">gain =</span> gain_data<span class="sc">@</span>y.values[[<span class="dv">1</span>]])</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Gain plot</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>gain_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gain_df, <span class="fu">aes</span>(<span class="at">x =</span> percentage, <span class="at">y =</span> gain)) <span class="sc">+</span></span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Percentage of Samples"</span>, <span class="at">y =</span> <span class="st">"True Positive Rate"</span>, <span class="at">title =</span> <span class="st">"Gain Plot"</span>)</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gain_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-11-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="7" type="1">
+<li>Lift Plot</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate lift</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>lift_data <span class="ot">&lt;-</span> <span class="fu">performance</span>(pred_obj, <span class="st">"lift"</span>, <span class="st">"rpp"</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>lift_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">percentage =</span> lift_data<span class="sc">@</span>x.values[[<span class="dv">1</span>]], <span class="at">lift =</span> lift_data<span class="sc">@</span>y.values[[<span class="dv">1</span>]])</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Lift plot</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>lift_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(lift_df, <span class="fu">aes</span>(<span class="at">x =</span> percentage, <span class="at">y =</span> lift)) <span class="sc">+</span></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Percentage of Samples"</span>, <span class="at">y =</span> <span class="st">"Lift"</span>, <span class="at">title =</span> <span class="st">"Lift Plot"</span>)</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lift_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-12-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="8" type="1">
+<li>Dashboard with cowplot</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a combined dashboard</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>dashboard <span class="ot">&lt;-</span> <span class="fu">plot_grid</span>(</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  leaderboard,</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>  prec_recall_plot,</span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>  roc_plot,</span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>  gain_plot,</span>
+<span id="cb65-7"><a href="#cb65-7" aria-hidden="true" tabindex="-1"></a>  lift_plot,</span>
+<span id="cb65-8"><a href="#cb65-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span></span>
+<span id="cb65-9"><a href="#cb65-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in as_grob.default(plot): Cannot convert object of class data.frame
+into a grob.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_line()`).
+Removed 1 row containing missing values or values outside the scale range
+(`geom_line()`).</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the dashboard</span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dashboard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-13-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample explanation data </span></span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a>explanation <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb69-6"><a href="#cb69-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">case =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb69-7"><a href="#cb69-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">feature =</span> <span class="fu">c</span>(<span class="st">"Feature A"</span>, <span class="st">"Feature B"</span>, <span class="st">"Feature C"</span>, <span class="st">"Feature D"</span>),</span>
+<span id="cb69-8"><a href="#cb69-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">importance =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.35</span>, <span class="fl">0.15</span>, <span class="fl">0.25</span>)</span>
+<span id="cb69-9"><a href="#cb69-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb69-10"><a href="#cb69-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-11"><a href="#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for case 1</span></span>
+<span id="cb69-12"><a href="#cb69-12" aria-hidden="true" tabindex="-1"></a>case_1 <span class="ot">&lt;-</span> explanation <span class="sc">%&gt;%</span></span>
+<span id="cb69-13"><a href="#cb69-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(case <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb69-14"><a href="#cb69-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-15"><a href="#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Define plot_features_custom function</span></span>
+<span id="cb69-16"><a href="#cb69-16" aria-hidden="true" tabindex="-1"></a>plot_features_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb69-17"><a href="#cb69-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(feature, importance), <span class="at">y =</span> importance)) <span class="sc">+</span></span>
+<span id="cb69-18"><a href="#cb69-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb69-19"><a href="#cb69-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Feature"</span>, <span class="at">y =</span> <span class="st">"Importance"</span>, <span class="at">title =</span> <span class="st">"Feature Importance"</span>) <span class="sc">+</span></span>
+<span id="cb69-20"><a href="#cb69-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb69-21"><a href="#cb69-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
+<span id="cb69-22"><a href="#cb69-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb69-23"><a href="#cb69-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-24"><a href="#cb69-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot for case 1</span></span>
+<span id="cb69-25"><a href="#cb69-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_features_custom</span>(case_1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-14-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample explanation data </span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>explanation <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">case =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">5</span>), <span class="fu">rep</span>(<span class="dv">2</span>, <span class="dv">5</span>)),</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">feature =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Feature A"</span>, <span class="st">"Feature B"</span>, <span class="st">"Feature C"</span>, <span class="st">"Feature D"</span>, <span class="st">"Feature E"</span>), <span class="dv">2</span>),</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">importance =</span> <span class="fu">runif</span>(<span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Define custom plot_explanations function</span></span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>plot_explanations_custom <span class="ot">&lt;-</span> <span class="cf">function</span>(data) {</span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> feature, <span class="at">y =</span> case, <span class="at">fill =</span> importance)) <span class="sc">+</span></span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Feature"</span>, <span class="at">y =</span> <span class="st">"Case"</span>, <span class="at">title =</span> <span class="st">"Feature Importance Across Cases"</span>) <span class="sc">+</span></span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb70-18"><a href="#cb70-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb70-19"><a href="#cb70-19" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb70-20"><a href="#cb70-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> case, <span class="at">scales =</span> <span class="st">"free_y"</span>, <span class="at">ncol =</span> <span class="dv">1</span>)</span>
+<span id="cb70-21"><a href="#cb70-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb70-22"><a href="#cb70-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-23"><a href="#cb70-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage: Plot for all cases</span></span>
+<span id="cb70-24"><a href="#cb70-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_explanations_custom</span>(explanation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="index_files/figure-html/unnamed-chunk-15-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -222,6 +1567,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -290,13 +1662,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'alternate';
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -323,12 +1697,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -360,11 +1737,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -374,8 +1790,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -387,9 +1812,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -430,7 +2091,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
 
 
 
