@@ -6,16 +6,405 @@ author: "Joschka Schwarz"
 
 ![](assets/logo/logo.png){width=80% fig-align="center"}
 
-This is a template example for lab journaling. Students in the data science courses at the Institute of Entrepreneurship will use this template to learn R for business analytics. Students can replace this text as they wish.
+Supervised ML - Regression (II)
 
-## How to use
+```{r}
+# Load necessary libraries
+library(tidyverse)
+library(recipes)
 
-1. Accept the assignment and get your own github repo.
+# Load the dataset
+bike_features_tbl <- readRDS("C:\\Users\\ADMIN\\Downloads\\bike_features_tbl.rds")
 
-2. Blog/journal what you are doing in R, by editing the `.qmd` files. 
+# Inspect the structure of the dataset
+str(bike_features_tbl)
 
-3. See the links page for lots of helpful links on learning R.
+# Convert 'Brake Rotor' and any other list columns to character or factor
+bike_features_tbl <- bike_features_tbl %>%
+  mutate(across(where(is.list), ~ as.character(unlist(.))))
 
-4. Change everything to make it your own.
+# Identify and remove categorical variables with only one level
+categorical_vars <- bike_features_tbl %>% select(where(is.character)) %>%
+  summarise(across(everything(), n_distinct)) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "n_levels") %>%
+  filter(n_levels == 1) %>%
+  pull(variable)
 
-5. Make sure to render you website everytime before you want to upload changes
+bike_features_tbl <- bike_features_tbl %>%
+  select(-all_of(categorical_vars))
+
+# Create a recipe for data preprocessing
+recipe_obj <- recipe(price ~ ., data = bike_features_tbl) %>%
+  # Handle missing values (impute using median for numeric and mode for categorical)
+  step_impute_median(all_numeric(), -all_outcomes()) %>%
+  step_impute_mode(all_nominal(), -all_outcomes()) %>%
+  # Normalize numeric data
+  step_normalize(all_numeric(), -all_outcomes()) %>%
+  # One-hot encode categorical variables
+  step_dummy(all_nominal(), -all_outcomes())
+
+# Prepare the recipe (estimate required parameters)
+prep_obj <- prep(recipe_obj, training = bike_features_tbl)
+
+# Apply the recipe to the dataset
+processed_data <- bake(prep_obj, new_data = bike_features_tbl)
+
+# View the first few rows of the processed data
+head(processed_data)
+
+
+```
+Supervised ML - Regression (I)
+
+```{r}
+# Load necessary libraries
+library(tidyverse)
+library(recipes)
+library(parsnip)
+library(workflows)
+
+# Load the dataset
+bike_features_tbl <- readRDS("C:\\Users\\ADMIN\\Downloads\\bike_features_tbl.rds")
+
+# Inspect the structure of the dataset
+str(bike_features_tbl)
+
+# Convert 'Brake Rotor' and any other list columns to character or factor
+bike_features_tbl <- bike_features_tbl %>%
+  mutate(across(where(is.list), ~ as.character(unlist(.))))
+
+# Identify and remove categorical variables with only one level
+categorical_vars <- bike_features_tbl %>% select(where(is.character)) %>%
+  summarise(across(everything(), n_distinct)) %>%
+  pivot_longer(everything(), names_to = "variable", values_to = "n_levels") %>%
+  filter(n_levels == 1) %>%
+  pull(variable)
+
+bike_features_tbl <- bike_features_tbl %>%
+  select(-all_of(categorical_vars))
+
+# Create a recipe for data preprocessing
+recipe_obj <- recipe(price ~ ., data = bike_features_tbl) %>%
+  # Handle missing values (impute using median for numeric and mode for categorical)
+  step_impute_median(all_numeric(), -all_outcomes()) %>%
+  step_impute_mode(all_nominal(), -all_outcomes()) %>%
+  # Normalize numeric data
+  step_normalize(all_numeric(), -all_outcomes()) %>%
+  # One-hot encode categorical variables
+  step_dummy(all_nominal(), -all_outcomes())
+
+# Specify a linear regression model
+linear_model <- linear_reg() %>%
+  set_engine("lm")
+
+# Bundle the recipe and model into a workflow
+workflow_obj <- workflow() %>%
+  add_recipe(recipe_obj) %>%
+  add_model(linear_model)
+
+# Fit the workflow to the data
+fitted_workflow <- fit(workflow_obj, data = bike_features_tbl)
+
+# View the fitted workflow
+fitted_workflow
+
+```
+
+Automated Machine Learning with H20 (I)
+
+1. c. Those that are leaving have a lower Monthly Income
+2. c. Those that are leaving have lower Percent Salary Hike
+3. b. Those that are staying have a higher stock option level
+4. a. A higher proportion of those leaving have a low environment satisfaction level
+5. a. Those that are leaving have higher density of 2's and 3's
+6. a. Those that are leaving have a lower density of 3's and 4's
+7. a. The proportion of those leaving that are working Over Time are high compared to those that are not leaving
+8. a. People that leave tend to have more annual trainings
+9. b. People that leave tend to have less working years at the company
+10. a. Those that are leaving have more years since last promotion than those that are staying
+
+
+
+Automated Machine Learning with H20 (II)
+
+```{r}
+# Load required library
+library(readr)
+
+# Load the dataset
+data <- read_csv("C:\\Users\\ADMIN\\OneDrive\\Desktop\\product_backorders.csv")
+
+# Display the first few rows of the dataset to understand its structure
+head(data)
+
+```
+
+```{r}
+# Assuming 'went_on_backorder' is the target variable
+response <- "went_on_backorder"
+predictors <- setdiff(names(data), response)
+
+# Create the predictor and response data frames
+X <- data[, predictors]
+y <- data[, response]
+
+```
+
+
+
+```{r}
+# Load required library
+library(h2o)
+
+# Initialize and connect to the H2O cluster
+h2o.init()
+
+# Specify the full path to the dataset
+dataset_path <- "C:/Users/ADMIN/OneDrive/Desktop/product_backorders.csv"
+
+# Load the dataset
+data <- h2o.importFile(dataset_path)
+
+# Display the first few rows of the dataset to understand its structure
+h2o.head(data)
+
+# Assuming 'went_on_backorder' is the target variable
+response <- "went_on_backorder"
+predictors <- setdiff(names(data), response)
+
+# Run AutoML with the loaded dataset
+aml <- h2o.automl(x = predictors, y = response, training_frame = data,
+                  max_runtime_secs = 300,  # Increase to 5 minutes or more
+                  max_models = 20)         # Try up to 20 models
+
+# View AutoML leaderboard
+print(aml@leaderboard)
+
+# Get the leader model
+leader <- aml@leader
+
+# Save the leader model
+h2o.saveModel(leader, path = "./h2o_leader_model", force = TRUE)
+
+
+
+
+```
+
+Performance Measures
+
+
+1. Leadership Visualization
+
+```{r}
+
+# Install required packages if not already installed
+if (!requireNamespace("h2o", quietly = TRUE)) install.packages("h2o")
+if (!requireNamespace("caret", quietly = TRUE)) install.packages("caret")
+if (!requireNamespace("ROCR", quietly = TRUE)) install.packages("ROCR")
+if (!requireNamespace("cowplot", quietly = TRUE)) install.packages("cowplot")
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+
+# Load required libraries
+library(h2o)
+library(caret)
+library(ROCR)
+library(cowplot)
+library(ggplot2)
+
+# Initialize and connect to the H2O cluster
+h2o.init()
+
+# Extract and plot the leaderboard
+leaderboard <- as.data.frame(aml@leaderboard)
+ggplot(leaderboard, aes(x = model_id, y = mean_per_class_error)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Model", y = "Mean Per Class Error", title = "AutoML Leaderboard") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+
+3. Visualize the trade of between the precision and the recall and the optimal threshold
+
+```{r}
+# Get the best model
+best_model <- aml@leader
+
+# Make predictions on the dataset
+predictions <- h2o.predict(best_model, data)
+
+# Convert predictions to a data frame
+predictions_df <- as.data.frame(predictions)
+
+# Ensure the actual and predicted vectors are factors with binary classes
+actual <- as.factor(as.vector(data[[response]]))
+predicted <- as.factor(as.vector(predictions_df$predict))
+
+# Check levels to make sure there are only two classes
+levels(actual) <- c("no", "yes")
+levels(predicted) <- c("no", "yes")
+
+
+```
+
+
+```{r}
+# Calculate precision and recall for different thresholds
+pred_obj <- prediction(as.numeric(predicted == "yes"), as.numeric(actual == "yes"))
+perf <- performance(pred_obj, "prec", "rec")
+
+# Plot precision-recall curve
+prec_recall_plot <- ggplot() +
+  geom_line(aes(x = perf@x.values[[1]], y = perf@y.values[[1]]), color = "blue") +
+  labs(x = "Recall", y = "Precision", title = "Precision-Recall Curve")
+print(prec_recall_plot)
+
+
+
+```
+
+
+4. ROC Plot
+
+```{r}
+# Calculate ROC curve
+roc_perf <- performance(pred_obj, "tpr", "fpr")
+
+# Plot ROC curve
+roc_plot <- ggplot() +
+  geom_line(aes(x = roc_perf@x.values[[1]], y = roc_perf@y.values[[1]]), color = "blue") +
+  labs(x = "False Positive Rate", y = "True Positive Rate", title = "ROC Curve")
+print(roc_plot)
+
+
+```
+
+
+5. Precision Recall Plot
+
+```{r}
+# Calculate precision and recall for different thresholds
+pred_obj <- prediction(as.numeric(predicted == "yes"), as.numeric(actual == "yes"))
+perf <- performance(pred_obj, "prec", "rec")
+
+# Plot precision-recall curve
+prec_recall_plot <- ggplot() +
+  geom_line(aes(x = perf@x.values[[1]], y = perf@y.values[[1]]), color = "blue") +
+  labs(x = "Recall", y = "Precision", title = "Precision-Recall Curve")
+print(prec_recall_plot)
+```
+
+6. Gain Plot
+
+```{r}
+# Calculate cumulative gains
+gain_data <- performance(pred_obj, "tpr", "rpp")
+gain_df <- data.frame(percentage = gain_data@x.values[[1]], gain = gain_data@y.values[[1]])
+
+# Gain plot
+gain_plot <- ggplot(gain_df, aes(x = percentage, y = gain)) +
+  geom_line(color = "blue") +
+  labs(x = "Percentage of Samples", y = "True Positive Rate", title = "Gain Plot")
+print(gain_plot)
+
+
+
+
+```
+
+7. Lift Plot
+
+```{r}
+# Calculate lift
+lift_data <- performance(pred_obj, "lift", "rpp")
+lift_df <- data.frame(percentage = lift_data@x.values[[1]], lift = lift_data@y.values[[1]])
+
+# Lift plot
+lift_plot <- ggplot(lift_df, aes(x = percentage, y = lift)) +
+  geom_line(color = "blue") +
+  labs(x = "Percentage of Samples", y = "Lift", title = "Lift Plot")
+print(lift_plot)
+
+```
+
+
+8. Dashboard with cowplot
+
+```{r}
+# Create a combined dashboard
+dashboard <- plot_grid(
+  leaderboard,
+  prec_recall_plot,
+  roc_plot,
+  gain_plot,
+  lift_plot,
+  nrow = 3
+)
+
+# Display the dashboard
+print(dashboard)
+
+
+```
+Explaining Black-Box Models With LIME
+
+```{r}
+library(tidyverse)
+
+
+# Sample explanation data 
+explanation <- tibble(
+  case = c(1, 1, 1, 1),
+  feature = c("Feature A", "Feature B", "Feature C", "Feature D"),
+  importance = c(0.25, 0.35, 0.15, 0.25)
+)
+
+# Filter data for case 1
+case_1 <- explanation %>%
+  filter(case == 1)
+
+# Define plot_features_custom function
+plot_features_custom <- function(data) {
+  ggplot(data, aes(x = fct_reorder(feature, importance), y = importance)) +
+    geom_col(fill = "skyblue", color = "black") +
+    labs(x = "Feature", y = "Importance", title = "Feature Importance") +
+    coord_flip() +
+    theme_minimal()
+}
+
+# Plot for case 1
+plot_features_custom(case_1)
+
+
+```
+
+```{r}
+# Sample explanation data 
+explanation <- tibble(
+  case = c(rep(1, 5), rep(2, 5)),
+  feature = rep(c("Feature A", "Feature B", "Feature C", "Feature D", "Feature E"), 2),
+  importance = runif(10, 0, 1)
+)
+
+# Define custom plot_explanations function
+plot_explanations_custom <- function(data) {
+  ggplot(data, aes(x = feature, y = case, fill = importance)) +
+    geom_tile(color = "white") +
+    scale_fill_gradient(low = "white", high = "skyblue") +
+    labs(x = "Feature", y = "Case", title = "Feature Importance Across Cases") +
+    theme_minimal() +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      strip.text = element_text(size = 12, face = "bold"),
+      plot.title = element_text(size = 16, hjust = 0.5)
+    ) +
+    facet_wrap(~ case, scales = "free_y", ncol = 1)
+}
+
+# Example usage: Plot for all cases
+plot_explanations_custom(explanation)
+
+```
+
+
